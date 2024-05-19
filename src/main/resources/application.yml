@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: LTHesisAIBot
+  datasource:
+    url: jdbc:postgresql://localhost:5432/LTHesisAIBotDB
+    username: admin
+    password: password
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o
+  vectorstore:
+    pgvector:
+    index-type: HNSW
+    distance-type: COSINE_DISTANCE
+    dimension: 1536
+  docker:
+    compose:
+      lifecycle-management: start_only
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${Client_ID}
+            client-secret: ${Client_secret}
+#  main:
+#    banner-mode: off
+#logging:
+#  level:
+#    root: off
